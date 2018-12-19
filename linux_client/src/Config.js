@@ -7,7 +7,7 @@ export default {
     Devices: [
         {
             $class: "net.ap.Device",
-            DeviceID: "1527217396",
+            DeviceID: "1525095957492",
             name: "IoT Machine 1",
             CPUInfomation: "Intel®Core™ i3-4160 3.60GHz",
             MACAddress: "00:0c:29:5a:d9:71",
@@ -16,7 +16,7 @@ export default {
         },
         {
             $class: "net.ap.Device",
-            DeviceID: "1527217396",
+            DeviceID: "1526405012341",
             name: "IoT Machine 1",
             CPUInfomation: "Intel®Core™ i3-4160 3.60GHz",
             MACAddress: "00:0c:29:5a:d9:71",
@@ -25,7 +25,7 @@ export default {
         },
         {
             $class: "net.ap.Device",
-            DeviceID: "1527217396",
+            DeviceID: "1528405729515",
             name: "IoT Machine 1",
             CPUInfomation: "Intel®Core™ i3-4160 3.60GHz",
             MACAddress: "00:0c:29:5a:d9:71",

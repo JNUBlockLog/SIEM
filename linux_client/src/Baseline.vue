@@ -38,7 +38,7 @@
             <v-list-tile-title>장비 이동 기록</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
-        <v-divider></v-divider>
+        <!-- <v-divider></v-divider>
         <v-list-tile :to="{path:'/network_overview'}">
           <v-list-tile-action>
             <v-icon>dashboard</v-icon>
@@ -70,7 +70,7 @@
           <v-list-tile-content>
             <v-list-tile-title>패킷 필터링 규칙 관리</v-list-tile-title>
           </v-list-tile-content>
-        </v-list-tile>
+        </v-list-tile> -->
       </v-list>
     </v-navigation-drawer>
     <v-toolbar color="indigo" dark fixed app>

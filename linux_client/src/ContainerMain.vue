@@ -5,10 +5,10 @@
       <br>
       <device-list-table></device-list-table>
       <device-movement-table></device-movement-table>
-      <v-layout row wrap>
+      <!-- <v-layout row wrap>
       <card-bar-chart></card-bar-chart>
       <card-line-chart></card-line-chart>
-      </v-layout>
+      </v-layout> -->
     </v-container>
 </template>
 
