@@ -42,7 +42,6 @@
             <tr :active="props.selected" @click="props.selected = !props.selected">
             <td>{{ props.item.name }}</td>
             <td class="text-xs-right">{{ props.item.MACAddress }}</td>
-            <td class="text-xs-right">{{ props.item.Processes }}</td>
             <td class="text-xs-right">{{ props.item.DeviceType }}</td>
             <td class="text-xs-right">{{ props.item.DeviceDesc }}</td>
             <td class="text-xs-right">{{ props.item.DeviceID }}</td>
@@ -72,7 +71,6 @@ export default {
         value: "name"
       },
       { text: "MAC 주소", value: "MACAddress" },
-      { text: "가동중인 프로세스 수", value: "Processes" },
       { text: "장비 종류", value: "DeviceType" },
       { text: "장비 설명", value: "DeviceDesc" },
       { text: "장비 ID", value: "DeviceID" }
@@ -113,11 +111,12 @@ export default {
 
     fetchData: function() {
       console.log(`[INFO] : fetching data at ${CONF.DeviceList}`);
-      this.$axios.get(CONF.DeviceList).then(response => {
-        this.deviceList = response.data;
-        console.log("Fetch Result:");
-        console.log(response);
-      });
+      this.deviceList = CONF.Devices;
+      // this.$axios.get(CONF.DeviceList).then(response => {
+      //   this.deviceList = response.data;
+      //   console.log("Fetch Result:");
+      //   console.log(response);
+      // });
     }
   }
 };

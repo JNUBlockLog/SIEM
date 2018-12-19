@@ -154,7 +154,8 @@ export default {
       })
         this.$refs.form.reset()
       }
-    }
+    },
+    
   }
 };
 </script>

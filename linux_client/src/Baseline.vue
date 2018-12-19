@@ -75,7 +75,7 @@
     </v-navigation-drawer>
     <v-toolbar color="indigo" dark fixed app>
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-toolbar-title>Security Information and Event Management</v-toolbar-title>
+      <v-toolbar-title>IoTLedger</v-toolbar-title>
     </v-toolbar>
     <v-content>
         <v-container fluid>
@@ -85,7 +85,7 @@
         </v-container>
     </v-content>
     <v-footer color="indigo" app>
-      <span class="white--text">&copy; SmartFactory Inc.</span>
+      <span class="white--text">&copy; Hardplant Inc. Github: https://github.com/hardplant</span>
     </v-footer>
   </v-app>
 </template>
