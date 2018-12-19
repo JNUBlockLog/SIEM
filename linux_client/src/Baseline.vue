@@ -19,7 +19,7 @@
             <v-icon>forward</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
-            <v-list-tile-title>장비 현황 열람</v-list-tile-title>
+            <v-list-tile-title>장비 목록</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
         <v-list-tile :to="{path:'/AP_list'}">
@@ -27,7 +27,7 @@
             <v-icon>signal_wifi_4_bar_lock</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
-            <v-list-tile-title>AP 현황 열람</v-list-tile-title>
+            <v-list-tile-title>AP 목록</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
         <v-list-tile :to="{path:'/device_movement'}">
