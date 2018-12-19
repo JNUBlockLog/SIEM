@@ -18,7 +18,7 @@
         <v-card-text>
             <v-data-table
             :headers="headers"
-            :items="deviceList"
+            :items="transactionList"
             :pagination.sync="pagination"
             select-all
             item-key="name"
@@ -40,12 +40,11 @@
             </template>
             <template slot="items" slot-scope="props">
             <tr :active="props.selected" @click="props.selected = !props.selected">
-            <td>{{ props.item.name }}</td>
-            <td class="text-xs-right">{{ props.item.MACAddress }}</td>
-            <td class="text-xs-right">{{ props.item.Processes }}</td>
-            <td class="text-xs-right">{{ props.item.DeviceType }}</td>
-            <td class="text-xs-right">{{ props.item.DeviceDesc }}</td>
-            <td class="text-xs-right">{{ props.item.DeviceID }}</td>
+            <td>{{ props.item.$class }}</td>
+            <td class="text-xs-right">{{ props.item.timestamp }}</td>
+            <td class="text-xs-right">{{ props.item.deviceFrom }}</td>
+            <td class="text-xs-right">{{ props.item.deviceTo }}</td>
+            <td class="text-xs-right">{{ props.item.transactionId }}</td>
             </tr>
             </template>
             <v-alert slot="no-results" :value="true" color="error" icon="warning">
@@ -67,17 +66,16 @@ export default {
     },
     headers: [
       {
-        text: "장비 이름",
+        text: "트랜잭션 종류",
         align: "left",
         value: "name"
       },
-      { text: "MAC 주소", value: "MACAddress" },
-      { text: "가동중인 프로세스 수", value: "Processes" },
-      { text: "장비 종류", value: "DeviceType" },
-      { text: "장비 설명", value: "DeviceDesc" },
-      { text: "장비 ID", value: "DeviceID" }
+      { text: "이동 시각", value: "DeviceDesc" },
+      { text: "해당 장비", value: "MACAddress" },
+      { text: "대상 장비", value: "Processes" },
+      { text: "트랜잭션 ID", value: "DeviceType" },
     ],
-    deviceList: [
+    transactionList: [
       {
         $class: "org.factory.Device",
         DeviceID: "Device:1527217396",
@@ -100,7 +98,7 @@ export default {
   methods: {
     toggleAll() {
       if (this.selected.length) this.selected = [];
-      else this.selected = this.deviceList.slice();
+      else this.selected = this.transactionList.slice();
     },
     changeSort(column) {
       if (this.pagination.sortBy === column) {
@@ -113,11 +111,20 @@ export default {
 
     fetchData: function() {
       console.log(`[INFO] : fetching data at ${CONF.DeviceList}`);
-      this.$axios.get(CONF.DeviceList).then(response => {
-        this.deviceList = response.data;
-        console.log("Fetch Result:");
-        console.log(response);
-      });
+      this.transactionList = CONF.Transactions;
+      // this.$axios.get(CONF.DeviceList).then(response => {
+      //   this.transactionList = response.data;
+      //   console.log("Fetch Result:");
+      //   console.log(response);
+      // });
+    },
+
+    sortTx: function(some, other) {
+      var t1 = new Date(some.timestamp).getTime();
+      var t2 = new Date(other.timestamp).getTime();
+      if (t1 < t2) return 1;
+      if (t1 == t2) return 0;
+      return -1;
     }
   }
 };

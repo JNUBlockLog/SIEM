@@ -41,7 +41,7 @@
             <template slot="items" slot-scope="props">
             <tr :active="props.selected" @click="props.selected = !props.selected">
             <td>{{ props.item.name }}</td>
-            <td class="text-xs-right">{{ props.item.APID }}</td>
+            <td class="text-xs-right">{{ props.item.MACAddress }}</td>
             </tr>
             </template>
             <v-alert slot="no-results" :value="true" color="error" icon="warning">
@@ -136,26 +136,29 @@ export default {
 
     fetchData: function() {
       console.log(`[INFO] : fetching data at ${CONF.APList}`);
-      this.$axios.get(CONF.APList).then(response => {
-        this.APList = response.data;
-        console.log("Fetch Result:");
-        console.log(response);
-      });
+      // this.$axios.get(CONF.APList).then(response => {
+      //   this.APList = response.data;
+      //   console.log("Fetch Result:");
+      //   console.log(response);
+      // });
+      this.APList = CONF.Devices.filter(this.findAP);
     },
     postData: function(){
       if(this.$refs.form.validate()){
         console.log(`${this.department}, ${this.apname}, ${this.macaddress}`);
         this.dialog = false
-        this.$axios.post(CONF.APList, {
-          $class: "org.factory.WiFiAP",
-          APID: this.macaddress,
-          department: "org.factory.Department#1",
-          name: this.apname
-      })
+      //   this.$axios.post(CONF.APList, {
+      //     $class: "org.factory.WiFiAP",
+      //     APID: this.macaddress,
+      //     department: "org.factory.Department#1",
+      //     name: this.apname
+      // });
         this.$refs.form.reset()
       }
     },
-    
+    findAP: function(device) {
+      return device.DeviceType == "AP";
+    }
   }
 };
 </script>
